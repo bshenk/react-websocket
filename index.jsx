@@ -34,7 +34,7 @@ class Websocket extends React.Component {
         };
 
         this.shouldReconnect = this.props.reconnect;
-        websocket.onclose = () => {
+        websocket.onerror = () => {
           this.logging('Websocket disconnected');
 
           if (this.shouldReconnect) {
@@ -78,4 +78,3 @@ Websocket.propTypes = {
 };
 
 export default Websocket;
-
