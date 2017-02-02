@@ -112,7 +112,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      websocket.onclose = function () {
 	        _this.props.onClose();
 	      };
+	
+	      websocket.send = this.props.sendMessage;
 	    }
+	  }, {
+	    key: 'sendMessage',
+	    value: function sendMessage() {}
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
@@ -121,7 +126,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      this.shouldReconnect = false;
 	      var websocket = this.state.ws;
 	      websocket.close();
 	    }
@@ -135,18 +139,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Websocket;
 	})(_react2['default'].Component);
 	
-	Websocket.defaultProps = {
-	  debug: false,
-	  reconnect: true
-	};
-	
 	Websocket.propTypes = {
 	  url: _react2['default'].PropTypes.string.isRequired,
 	  onMessage: _react2['default'].PropTypes.func.isRequired,
 	  onOpen: _react2['default'].PropTypes.func,
 	  onClose: _react2['default'].PropTypes.func,
-	  debug: _react2['default'].PropTypes.bool,
-	  reconnect: _react2['default'].PropTypes.bool,
 	  protocol: _react2['default'].PropTypes.string
 	};
 	

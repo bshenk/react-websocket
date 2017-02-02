@@ -25,14 +25,19 @@ class Websocket extends React.Component {
         websocket.onclose = () => {
           this.props.onClose()
         }
+
+		websocket.send = this.props.sendMessage
     }
+
+	sendMessage() {
+
+	}
 
     componentDidMount() {
       this.setupWebsocket();
     }
 
     componentWillUnmount() {
-      this.shouldReconnect = false;
       let websocket = this.state.ws;
       websocket.close();
     }
@@ -44,18 +49,11 @@ class Websocket extends React.Component {
     }
 }
 
-Websocket.defaultProps = {
-    debug: false,
-    reconnect: true
-};
-
 Websocket.propTypes = {
     url: React.PropTypes.string.isRequired,
     onMessage: React.PropTypes.func.isRequired,
 	onOpen: React.PropTypes.func,
 	onClose: React.PropTypes.func,
-    debug: React.PropTypes.bool,
-    reconnect: React.PropTypes.bool,
     protocol: React.PropTypes.string
 };
 
