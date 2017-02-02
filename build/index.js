@@ -102,16 +102,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var websocket = this.state.ws;
 	
 	      websocket.onopen = function () {
-	        _this.logging('Websocket connected');
+	        _this.props.onOpen();
 	      };
 	
 	      websocket.onmessage = function (evt) {
 	        _this.props.onMessage(evt.data);
 	      };
 	
-	      this.shouldReconnect = this.props.reconnect;
 	      websocket.onclose = function () {
-	        _this.logging('Websocket disconnected');
+	        _this.props.onClose();
 	      };
 	    }
 	  }, {
@@ -144,6 +143,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	Websocket.propTypes = {
 	  url: _react2['default'].PropTypes.string.isRequired,
 	  onMessage: _react2['default'].PropTypes.func.isRequired,
+	  onOpen: _react2['default'].PropTypes.func,
+	  onClose: _react2['default'].PropTypes.func,
 	  debug: _react2['default'].PropTypes.bool,
 	  reconnect: _react2['default'].PropTypes.bool,
 	  protocol: _react2['default'].PropTypes.string
