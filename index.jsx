@@ -25,8 +25,6 @@ class Websocket extends React.Component {
         websocket.onclose = () => {
           this.props.onClose()
         }
-
-		websocket.send = this.props.sendMessage
     }
 
 	sendMessage() {

@@ -112,8 +112,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      websocket.onclose = function () {
 	        _this.props.onClose();
 	      };
-	
-	      websocket.send = this.props.sendMessage;
 	    }
 	  }, {
 	    key: 'sendMessage',
